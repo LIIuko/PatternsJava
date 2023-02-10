@@ -42,11 +42,31 @@ public class StreamWork {
                 new Human(18, "Nikita", "Red", LocalDate.of(2003, 8, 10), 36),
         };
 
-        Stream<Human> stream = Arrays.stream(humans);
-        stream.filter(human -> human.birthDate.compareTo(LocalDate.of(1999, 2, 3)) < 1)
-                .forEach(human -> {
-                    human.weight -= 5;
-                    System.out.print(human.lastName + " ");
-                });
+        Stream<Human> stream1 = Arrays.stream(humans);
+        Stream<Human> stream2 = Arrays.stream(humans);
+        Stream<Human> stream3 = Arrays.stream(humans);
+        minusWeight(stream1);
+        System.out.println("-------------------------------");
+        filterDate(stream2);
+        System.out.println("-------------------------------");
+        concatenationLastName(stream3);
+//        stream.filter(human -> human.birthDate.compareTo(LocalDate.of(1999, 2, 3)) < 1)
+//                .forEach(human -> {
+//                    human.weight -= 5;
+//                    System.out.print(human.lastName + " ");
+//                });
+    }
+
+
+    private static void minusWeight(Stream<Human> stream){
+        stream.forEach(human -> {human.weight -= 5; System.out.println(human);});
+    }
+
+    private static void filterDate(Stream<Human> stream){
+        stream.filter(human -> human.birthDate.compareTo(LocalDate.of(1999, 2, 3)) < 0).forEach(System.out::println);
+    }
+
+    private static void concatenationLastName(Stream<Human> stream){
+        stream.forEach(human -> System.out.print(human.lastName + " "));
     }
 }
