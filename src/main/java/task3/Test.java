@@ -6,7 +6,6 @@ public class Test {
     private static Map<Integer, String> mapSync = new MapSemaphore<>();
 
     private static Set<Integer> setSync = new SetLock();
-//    private static Set<Integer> setSync = new HashSet<>();
 
 
     public static void main(String[] args) {
